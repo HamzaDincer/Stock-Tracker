@@ -1,0 +1,29 @@
+@use 'fonts' as *;
+@use 'mixins' as *;
+
+//Resets SASS 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+
+}
+
+body {
+    margin: 0;
+}
+
+
+
+p {
+    margin: 0;
+}
+
+
+a {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+}

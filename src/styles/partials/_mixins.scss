@@ -1,0 +1,20 @@
+@use 'variables' as *;
+
+//Mixins SASS Partials
+@mixin tablet {
+    @media screen and (min-width: $tablet-breakpoint) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media screen and (min-width: $desktop-breakpoint) {
+        @content;
+    }
+}
+
+@mixin container {
+    background-color: $secondary-color;
+    border-radius: 1.25rem;
+    width: 100%;
+}
