@@ -2,10 +2,9 @@
 
 
 .header__logo {
-    height: 10rem;
         
     @include tablet {
-        padding-right: 5rem;
+
     }
 
 }

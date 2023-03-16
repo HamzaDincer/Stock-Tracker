@@ -1,0 +1,29 @@
+@import "../../styles/partials/mixins";
+
+.header__search{
+    font-family: "AvenirNext";
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    padding-left: 2rem;
+
+    @include tablet {
+        max-width: 15rem;
+    }
+    @include desktop {
+        width: 15rem;
+      
+    }
+}
+
+.header__form {
+    
+    ::placeholder {
+        color: black;
+        
+    }
+    :focus {
+        border-color: blue;
+        outline: none;
+    }
+}

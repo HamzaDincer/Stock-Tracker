@@ -1,6 +1,6 @@
 import "./SearchBar.scss";
 
-const Search = () => {
+const SearchBar = () => {
 
     return (
     <form className="header__form">
@@ -9,4 +9,4 @@ const Search = () => {
     )
 }
 
-export default Search;
+export default SearchBar;
