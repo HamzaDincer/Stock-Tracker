@@ -4,11 +4,10 @@
     display: flex;
 
     &__link {
-        height: 1.8rem;
-        margin-bottom: 1rem;
+
 
         @include tablet{
-        margin:0.5rem 0;
+
         }
     }
     &__form {
