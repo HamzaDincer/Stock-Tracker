@@ -1,0 +1,24 @@
+@import "../../styles/partials/mixins";
+
+.header{
+    display: flex;
+
+    &__link {
+        height: 1.8rem;
+        margin-bottom: 1rem;
+
+        @include tablet{
+        margin:0.5rem 0;
+        }
+    }
+    &__form {
+        display: flex;
+        width: 80%;
+        @include tablet {
+            width: 100%;
+            justify-content: right;
+        }
+        
+    }
+
+}
