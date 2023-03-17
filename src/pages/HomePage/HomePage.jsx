@@ -1,3 +1,4 @@
+import Header from "../../components/Header/Header";
 import React, { useEffect, useState } from 'react';
 import "./HomePage.scss";
 import axios from 'axios';
@@ -67,9 +68,12 @@ export default function HomePage() {
     }
 
     return (
+        <>
+        <Header />
         <div className='home-page'>
             <StockChart symbol={"SPY"} timeSeriesData={spyData} />
             <StockChart symbol={"QQQ"} timeSeriesData={qqqData} />
         </div>
+        </>
     )
 }

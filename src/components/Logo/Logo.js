@@ -6,7 +6,7 @@ const Logo = () => {
 
     return (
     <Link to={"/"} className="header__link">
-        <img alt="Stock-Tracker logo" className="header__logo" /> 
+        <img src={logo} alt="Stock-Tracker logo" className="header__logo" /> 
     </Link>
     )
 };

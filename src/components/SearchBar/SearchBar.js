@@ -1,5 +1,6 @@
 import "./SearchBar.scss";
 import { useState, useRef } from "react";
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
 const SearchBar = () => {
@@ -7,17 +8,18 @@ const SearchBar = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
   const inputRef = useRef();
+  const navigate = useNavigate();
+
 
   const handleSearch = (event) => {
     event.preventDefault();
     const inputValue = inputRef.current.value;
     axios
       .get(
-        `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${inputValue}&apikey=AL6W744S27CFJPR5`
+        `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${inputValue}&apikey=W6N24QP7CIY7T9UW`
       )
       .then((response) => {
         setSearchResults(response.data.bestMatches);
-        console.log(response.data.bestMatches[0]);
         setShowResults(true);
       })
       .catch((error) => {
@@ -29,11 +31,12 @@ const SearchBar = () => {
     console.log(`Selected symbol: ${symbol}`);
     setShowResults(false);
     inputRef.current.value = symbol;
+    navigate(`/${symbol}`);
   };
 
   return (
     <div className="header__search-container">
-      <form className="header__form" onChange={handleSearch}>
+      <form className="header__form" onChange={handleSearch} >
         <input
           type="search"
           placeholder="Search"
@@ -44,14 +47,12 @@ const SearchBar = () => {
         ></input>
         {showResults && (
           <ul className="header__search-results">
-            {searchResults && searchResults.map((result) => (
-              <li
-                key={result["1. symbol"]}
-                onClick={() => handleResultClick(result.symbol)}
-              >
-                {result["1. symbol"]} - {result["2. name"]}
-              </li>
-            ))}
+            {searchResults &&
+              searchResults.map((result) => (
+                  <li onMouseDown={() => handleResultClick(result["1. symbol"])}>
+                    {result["1. symbol"]} - {result["2. name"]}
+                  </li>
+              ))}
           </ul>
         )}
       </form>

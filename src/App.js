@@ -8,10 +8,9 @@ import './App.scss';
 function App() {
   return(
   <BrowserRouter>
-   
       <Routes>
         <Route path="/" element={<HomePage />}/>
-        <Route path="/:id" element={<StockPage />}/>
+        <Route path="/:symbol" element={<StockPage />}/>
       </Routes>
   </BrowserRouter>
   ) 
