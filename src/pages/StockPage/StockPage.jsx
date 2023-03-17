@@ -21,7 +21,7 @@ export default function StockPage() {
     
     useEffect(() => {
         axios
-          .get(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${symbol}&apikey=73JZ32HRA49R97VZ`)
+          .get(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${symbol}&apikey=O9DAD5XOI6UOB740`)
           .then(res => {
             setCompResults(res.data);
             console.log(res.data);
@@ -66,7 +66,9 @@ export default function StockPage() {
         
         <div>
             <StockChart symbol={symbol} timeSeriesData={tickerTime} />
+      
         </div> 
+        <p className="text-center">{symbol.toUpperCase()}</p>
         <div>
             <h2>{compResults.Name}</h2>
             <p>{compResults.Description}</p>

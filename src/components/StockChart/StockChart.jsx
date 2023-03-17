@@ -47,6 +47,7 @@ const StockChart = ({ symbol, timeSeriesData }) => {
     return (
         <div>
             <Line data={chartData} options={{ maintainAspectRatio: false, scales: { x: { type: 'time', time: { unit: 'hour' }, ticks: { source: 'data' } }, }, }} className="stock-chart" />
+
         </div>
     );
 };

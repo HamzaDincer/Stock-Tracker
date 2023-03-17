@@ -77,9 +77,12 @@ export default function HomePage() {
     <>
       <Header />
       <div className='home-page'>
+      <p className="text-center">SPY</p>
         <StockChart symbol={"SPY"} timeSeriesData={spyData} />
         <br />
+        <p className="text-center">QQQ</p>
         <StockChart symbol={"QQQ"} timeSeriesData={qqqData} />
+        
         <br />
         {newsData && (
           <>
