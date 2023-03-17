@@ -5,6 +5,9 @@
     width: 80%;
     display: flex;
     color: #fff;
+    @include tablet {
+    margin-right: 2rem;
+    }
 
 
     .header__form {

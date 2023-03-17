@@ -2,9 +2,15 @@
 
 
 .header__logo {
-        height: 70px;
+        height: 95%;
+        width: 8rem;
         border: 1px solid black;
         padding: 5px;
         border-radius: 100px;
+
+        @include tablet {
+                margin: 0 3rem;
+
+        }
 
 }
