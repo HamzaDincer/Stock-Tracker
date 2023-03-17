@@ -2,6 +2,7 @@ import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart, registerables } from 'chart.js';
 import 'chartjs-adapter-date-fns';
+import "./StockChart.scss"
 
 Chart.register(...registerables);
 
@@ -16,9 +17,19 @@ const StockChart = ({ symbol, timeSeriesData }) => {
     const filteredObject = {};
     Object.keys(timeSeriesData).forEach(key => {
         const keyDateObj = new Date(key);
-        const keyHour = keyDateObj.getHours();
-        if (keyHour >= 9 && keyHour <= 16) {
-            filteredObject[key] = timeSeriesData[key];
+
+        const currentDate = new Date();
+        const yesterday = new Date(currentDate);
+        yesterday.setDate(currentDate.getDate() - 1);
+        
+        if (keyDateObj.getDate() === yesterday.getDate() &&
+            keyDateObj.getMonth() === yesterday.getMonth() &&
+            keyDateObj.getFullYear() === yesterday.getFullYear()) {
+
+            const keyHour = keyDateObj.getHours();
+            if (keyHour >= 9 && keyHour <= 16) {
+                filteredObject[key] = timeSeriesData[key];
+            }
         }
     })
     const chartData = {
@@ -34,7 +45,7 @@ const StockChart = ({ symbol, timeSeriesData }) => {
     };
     return (
         <div>
-            <Line data={chartData} options={{ maintainAspectRatio: false, scales: { x: { type: 'time', time: { unit: 'hour' }, ticks: { source: 'data' } }, }, }} />
+            <Line data={chartData} options={{ maintainAspectRatio: false, scales: { x: { type: 'time', time: { unit: 'hour' }, ticks: { source: 'data' } }, }, }} className="stock-chart" />
         </div>
     );
 };
