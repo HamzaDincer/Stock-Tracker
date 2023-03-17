@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import "./HomePage.scss";
 import axios from 'axios';
 import StockChart from "../../components/StockChart/StockChart"
-import NewsCard from "../../components/NewsCard/NewsCard";
+import NewsSection from "../../components/NewsSection/NewsSection";
 
 export default function HomePage() {
 
@@ -15,7 +15,7 @@ export default function HomePage() {
     
     const fetchMarketNews = async () => {
         try {
-            const response = await axios.get(`https://www.alphavantage.co/query?function=NEWS_SENTIMENT&apikey=${apiKey}`);
+            const response = await axios.get(`https://www.alphavantage.co/query?function=NEWS_SENTIMENT&apikey=GQ3QQCY9H3XEFSFY`);
             setNewsData(response.data);        
         } catch (e) {
             console.error('Error 404: Fetching Market News:', e);
@@ -33,7 +33,7 @@ export default function HomePage() {
 
       const fetchTicker = async ({ ticker }) => {
         try {
-          const response = await axios.get(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${ticker}&interval=15min&adjusted=true&outputsize=compact&datatype=json&start_time=09:30:00&end_time=14:00:00&apikey=${apiKey}`);
+          const response = await axios.get(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${ticker}&interval=15min&adjusted=true&outputsize=compact&datatype=json&start_time=09:30:00&end_time=14:00:00&apikey=GQ3QQCY9H3XEFSFY`);
           return response.data;
         } catch (e) {
           console.error(`Error 404: Fetching Market Data for ${ticker}:`, e);
@@ -74,7 +74,7 @@ export default function HomePage() {
         <div className='home-page'>
             <StockChart symbol={"SPY"} timeSeriesData={spyData} />
             <StockChart symbol={"QQQ"} timeSeriesData={qqqData} />
-            <NewsCard newsData={newsData} />
+            {newsData && <NewsSection newsData={newsData.feed} />}
         </div>
         </>
     )
