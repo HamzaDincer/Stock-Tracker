@@ -40,6 +40,7 @@ const StockChart = ({ symbol, timeSeriesData }) => {
                 data: Object.values(filteredObject).map((entry) => parseFloat(entry['4. close'])),
                 borderColor: 'rgba(75, 192, 192, 1)',
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                
             },
         ],
     };

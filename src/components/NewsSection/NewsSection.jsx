@@ -3,7 +3,7 @@ import NewsCard from '../NewsCard/NewsCard';
 import "./NewsSection.scss"
 export default function NewSection({newsData}) {
   console.log(newsData)
-  const newsCards = newsData.map((newCard, i) => {
+  const newsCards = newsData && newsData.map((newCard, i) => {
     return (
         <NewsCard
           key={i}

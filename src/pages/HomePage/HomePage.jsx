@@ -62,6 +62,7 @@ export default function HomePage() {
   }, [selectedTopic]);
 
 
+
   const handleTopicChange = (event) => {
     const selectedValue = event.target.value;
     console.log(selectedValue)
@@ -79,19 +80,20 @@ export default function HomePage() {
         <StockChart symbol={"SPY"} timeSeriesData={spyData} />
         <br />
         <StockChart symbol={"QQQ"} timeSeriesData={qqqData} />
+        <br />
         {newsData && (
           <>
-            <div className="topic-filter">
-              <label htmlFor="topic-select">Filter by Topic:</label>
-              <select id="topic-select" value={selectedTopic} onChange={handleTopicChange}>
-                <option value="">All</option>
-                <option value="financial_markets">Financial Markets</option>
-                <option value="earnings">Earnings</option>
-                <option value="life_sciences">Life Sciences</option>
-                <option value="blockchain">Blockchain</option>
-              </select>
+            <div className="row">
+              <div  className="row__child">
+                <div onClick={() => setSelectedTopic("")}>All</div>
+                <div onClick={() => setSelectedTopic("financial_markets")}>Financial Markets</div>
+                <div onClick={() => setSelectedTopic("technology")}>Technology</div>
+                <div onClick={() => setSelectedTopic("real_estate")}>Real Estate</div>
+                <div onClick={() => setSelectedTopic("blockchain")}>Blockchain</div>
+              </div>
+              <NewsSection newsData={filteredNewsData} selectedTopic = {selectedTopic} />
             </div>
-            <NewsSection newsData={filteredNewsData} selectedTopic = {selectedTopic} />
+
           </>
         )}
       </div>
