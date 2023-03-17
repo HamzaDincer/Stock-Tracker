@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import "./HomePage.scss";
 import axios from 'axios';
 import StockChart from "../../components/StockChart/StockChart"
+import NewsCard from "../../components/NewsCard/NewsCard";
 
 export default function HomePage() {
 
@@ -73,6 +74,7 @@ export default function HomePage() {
         <div className='home-page'>
             <StockChart symbol={"SPY"} timeSeriesData={spyData} />
             <StockChart symbol={"QQQ"} timeSeriesData={qqqData} />
+            <NewsCard newsData={newsData} />
         </div>
         </>
     )

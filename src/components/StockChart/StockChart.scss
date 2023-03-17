@@ -1,6 +1,13 @@
+
+@use "../../styles/partials/resets";
+@use '../../styles/partials/mixins' as *;
+
 .stock-chart {
     background-color: black;
     color: white;
     height: 15.25rem;
+    @include tablet {
+        height: 25.25rem;
+    }
     
 }
