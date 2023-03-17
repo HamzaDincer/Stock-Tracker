@@ -13,11 +13,10 @@ const SearchBar = () => {
     const inputValue = inputRef.current.value;
     axios
       .get(
-        `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${inputValue}&apikey=AL6W744S27CFJPR5`
+        `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${inputValue}&apikey=W6N24QP7CIY7T9UW`
       )
       .then((response) => {
         setSearchResults(response.data.bestMatches);
-        console.log(response.data.bestMatches[0]);
         setShowResults(true);
       })
       .catch((error) => {
@@ -47,7 +46,7 @@ const SearchBar = () => {
             {searchResults && searchResults.map((result) => (
               <li
                 key={result["1. symbol"]}
-                onClick={() => handleResultClick(result.symbol)}
+                onMouseDown={() => handleResultClick(result["1. symbol"])}
               >
                 {result["1. symbol"]} - {result["2. name"]}
               </li>
