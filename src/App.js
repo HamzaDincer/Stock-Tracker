@@ -7,7 +7,7 @@ import './App.scss';
 
 function App() {
   return(
-        <BrowserRouter>
+        <BrowserRouter >
                 <Routes>
           <Route path="/" element={<HomePage />}/>
           <Route path="/:symbol" element={<StockPage />}/>

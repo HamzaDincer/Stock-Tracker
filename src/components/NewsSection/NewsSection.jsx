@@ -1,6 +1,6 @@
 import React from 'react'
 import NewsCard from '../NewsCard/NewsCard';
-
+import "./NewsSection.scss"
 export default function NewSection({newsData}) {
   console.log(newsData)
   const newsCards = newsData.map((newCard, i) => {
@@ -23,7 +23,7 @@ export default function NewSection({newsData}) {
   });
 
   return (
-    <div className='news-card'>
+    <div className='newsec-card'>
         {newsCards}
     </div>
   )

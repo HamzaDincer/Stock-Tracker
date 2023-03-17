@@ -7,11 +7,15 @@
     background-color: black;
     color: white;
     height: 20rem;
+    padding-bottom: 0.5rem;
     border: 1px solid rgba(255, 255, 255, 0.395);
-    margin: 0 0.5rem;
+    margin: 0.5 0.5rem;
+    border-radius: 1rem;
+
     @include tablet {
         height: 25.25rem;
-        margin: 0 5rem;
+        padding-bottom: 1.5rem;
+        margin: 0 3rem;
     }
     
 }
