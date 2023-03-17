@@ -6,6 +6,9 @@ import axios from 'axios';
 import { Line } from 'react-chartjs-2';
 import { useParams } from 'react-router-dom';
 import StockChart from "../../components/StockChart/StockChart"
+import NewsFeed from "../../components/NewsFeed/NewsFeed";
+
+
 
 export default function StockPage() {
 
@@ -50,7 +53,7 @@ export default function StockPage() {
 
     const fetchTicker = async ({ symbol }) => {
         try {
-          const response = await axios.get(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=15min&adjusted=true&outputsize=compact&datatype=json&start_time=09:30:00&end_time=14:00:00&apikey=GQ3QQCY9H3XEFSFY`);
+          const response = await axios.get(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=15min&adjusted=true&outputsize=compact&datatype=json&start_time=09:30:00&end_time=14:00:00&apikey=O9DAD5XOI6UOB740`);
           return setTickerResults(response.data);
         } catch (e) {
           console.error(`Error 404: Fetching Market Data for ${symbol}:`, e);
@@ -63,7 +66,7 @@ export default function StockPage() {
         
         <div>
             <StockChart symbol={symbol} timeSeriesData={tickerTime} />
-        </div> 
+        </div> gi
         <div>
             <h2>{compResults.Name}</h2>
             <p>{compResults.Description}</p>
@@ -154,6 +157,8 @@ export default function StockPage() {
                 </tr>
             </table>
         </div> 
+
+        <NewsFeed symbol={compResults.Name} />
         
         </>
     );
