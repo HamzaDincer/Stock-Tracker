@@ -1,3 +1,4 @@
+import Header from "../../components/Header/Header";
 import React from 'react'
 import "./StockPage.scss"
 import { useEffect, useState } from 'react';
@@ -17,8 +18,11 @@ export default function StockPage() {
     }, [symbol]);
 
     return (
+        <>
+        <Header />
         <div>
             {/* <StockChart symbol={symbol} /> */}
         </div> 
+        </>
     );
 }

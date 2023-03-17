@@ -1,5 +1,6 @@
 import "./SearchBar.scss";
 import { useState, useRef } from "react";
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
 const SearchBar = () => {
@@ -7,6 +8,8 @@ const SearchBar = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
   const inputRef = useRef();
+  const navigate = useNavigate();
+
 
   const handleSearch = (event) => {
     event.preventDefault();
@@ -28,11 +31,12 @@ const SearchBar = () => {
     console.log(`Selected symbol: ${symbol}`);
     setShowResults(false);
     inputRef.current.value = symbol;
+    navigate(`/${symbol}`);
   };
 
   return (
     <div className="header__search-container">
-      <form className="header__form" onChange={handleSearch}>
+      <form className="header__form" onChange={handleSearch} >
         <input
           type="search"
           placeholder="Search"
@@ -43,14 +47,12 @@ const SearchBar = () => {
         ></input>
         {showResults && (
           <ul className="header__search-results">
-            {searchResults && searchResults.map((result) => (
-              <li
-                key={result["1. symbol"]}
-                onMouseDown={() => handleResultClick(result["1. symbol"])}
-              >
-                {result["1. symbol"]} - {result["2. name"]}
-              </li>
-            ))}
+            {searchResults &&
+              searchResults.map((result) => (
+                  <li onMouseDown={() => handleResultClick(result["1. symbol"])}>
+                    {result["1. symbol"]} - {result["2. name"]}
+                  </li>
+              ))}
           </ul>
         )}
       </form>

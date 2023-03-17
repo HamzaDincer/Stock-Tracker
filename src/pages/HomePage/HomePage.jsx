@@ -1,7 +1,9 @@
+import Header from "../../components/Header/Header";
 import React, { useEffect, useState } from 'react';
 import "./HomePage.scss";
 import { fetchMarketNews } from "../../api"
 import axios from 'axios';
+
 export default function HomePage() {
 
     const [newsData, setNewsData] = useState({});
@@ -31,8 +33,11 @@ export default function HomePage() {
     
 
     return (
+        <>
+        <Header />
         <div className='home-page'>
         </div>
+        </>
     )
 }
 
