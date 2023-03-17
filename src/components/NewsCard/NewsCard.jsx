@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import "./NewsCard.scss"
 function NewsCard({ author, title, image, url, ticker_sentiment, overall_sentiment_label, overall_sentiment_score, source, source_domain, summary, isEven }) {
   const [showSummary, setShowSummary] = useState(false);
 

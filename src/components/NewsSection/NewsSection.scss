@@ -1,0 +1,11 @@
+
+@use '../../styles/partials/mixins' as *;
+
+.newsec-card{
+    margin: 0 1rem;
+    border-radius: 1rem;
+    @include tablet {
+        margin: 0 3rem;
+    }
+} 
+
