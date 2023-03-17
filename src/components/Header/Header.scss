@@ -2,22 +2,16 @@
 
 .header{
     display: flex;
+    background-color: #000000f7;
+    color: #fff;
+    justify-content: space-between;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    
+
 
     &__link {
+        height: 82px;
 
-
-        @include tablet{
-
-        }
     }
-    &__form {
-        display: flex;
-        width: 80%;
-        @include tablet {
-            width: 100%;
-            justify-content: right;
-        }
-        
-    }
-
 }
