@@ -7,8 +7,11 @@
     background-color: black;
     color: white;
     height: 20rem;
+    border: 1px solid rgba(255, 255, 255, 0.395);
+    margin: 0 0.5rem;
     @include tablet {
         height: 25.25rem;
+        margin: 0 5rem;
     }
     
 }

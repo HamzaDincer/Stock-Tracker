@@ -66,7 +66,7 @@ export default function StockPage() {
         
         <div>
             <StockChart symbol={symbol} timeSeriesData={tickerTime} />
-        </div> gi
+        </div> 
         <div>
             <h2>{compResults.Name}</h2>
             <p>{compResults.Description}</p>
