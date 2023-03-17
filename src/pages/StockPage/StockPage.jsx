@@ -18,7 +18,7 @@ export default function StockPage() {
     
     useEffect(() => {
         axios
-          .get(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${symbol}&apikey=W6N24QP7CIY7T9UW`)
+          .get(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${symbol}&apikey=73JZ32HRA49R97VZ`)
           .then(res => {
             setCompResults(res.data);
             console.log(res.data);
@@ -50,7 +50,7 @@ export default function StockPage() {
 
     const fetchTicker = async ({ symbol }) => {
         try {
-          const response = await axios.get(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=15min&adjusted=true&outputsize=compact&datatype=json&start_time=09:30:00&end_time=14:00:00&apikey=73JZ32HRA49R97VZ`);
+          const response = await axios.get(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=15min&adjusted=true&outputsize=compact&datatype=json&start_time=09:30:00&end_time=14:00:00&apikey=GQ3QQCY9H3XEFSFY`);
           return setTickerResults(response.data);
         } catch (e) {
           console.error(`Error 404: Fetching Market Data for ${symbol}:`, e);

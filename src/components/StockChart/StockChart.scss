@@ -3,9 +3,10 @@
 @use '../../styles/partials/mixins' as *;
 
 .stock-chart {
+    display: flex;
     background-color: black;
     color: white;
-    height: 15.25rem;
+    height: 20rem;
     @include tablet {
         height: 25.25rem;
     }
