@@ -16,7 +16,7 @@ const SearchBar = () => {
     const inputValue = inputRef.current.value;
     axios
       .get(
-        `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${inputValue}&apikey=W6N24QP7CIY7T9UW`
+        `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${inputValue}&apikey=F2F4VJWT3BRTD7TJ`
       )
       .then((response) => {
         setSearchResults(response.data.bestMatches);
