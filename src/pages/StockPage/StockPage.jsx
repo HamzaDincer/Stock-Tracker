@@ -12,24 +12,57 @@ export default function StockPage() {
     const { symbol } = useParams();
 
     const [compResults, setCompResults] = useState({});
+    const [tickerResults, setTickerResults] = useState(null);
+    const [tickerTime, setTickerTime] = useState(null);
     
     
     useEffect(() => {
         axios
-        .get(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${symbol}&apikey=W6N24QP7CIY7T9UW`)
-        .then(res => {
+          .get(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${symbol}&apikey=W6N24QP7CIY7T9UW`)
+          .then(res => {
             setCompResults(res.data);
-            console.log(res.data)
-        })
-    
-    }, [symbol]);
+            console.log(res.data);
+          })
+          .catch(error => console.error(error));
+      
+        const fetchTicker = async (symbol) => {
+          try {
+            const response = await axios.get(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=15min&apikey=W6N24QP7CIY7T9UW`);
+            const timeSeriesData = response.data['Time Series (15min)'];
+            setTickerTime(timeSeriesData);
+          } catch (e) {
+            console.error(`Error 404: Fetching Market Data for ${symbol}:`, e);
+          }
+        };
+      
+        fetchTicker(symbol);
+      }, [symbol]);
+
+    const handleApiResponse = (data, ticker) => {
+        if (data.hasOwnProperty("Note")) {
+          console.log(`API call frequency exceeded for ${ticker}. Please try again later.`, data);
+          return false;
+        } else {
+          return data['Time Series (15min)'];
+        }
+      };
+
+
+    const fetchTicker = async ({ symbol }) => {
+        try {
+          const response = await axios.get(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=15min&adjusted=true&outputsize=compact&datatype=json&start_time=09:30:00&end_time=14:00:00&apikey=73JZ32HRA49R97VZ`);
+          return setTickerResults(response.data);
+        } catch (e) {
+          console.error(`Error 404: Fetching Market Data for ${symbol}:`, e);
+        }
+      };
 
     return (
         <>
         <Header />
         
         <div>
-            {/* <StockChart symbol={symbol} /> */}
+            <StockChart symbol={symbol} timeSeriesData={tickerTime} />
         </div> 
         <div>
             <h2>{compResults.Name}</h2>
